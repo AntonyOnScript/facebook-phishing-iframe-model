@@ -1,12 +1,12 @@
 var email = document.getElementById('email')
-var senha = document.getElementById('senha')
+var password = document.getElementById('password')
 email.onfocus=function(){
-    senha.style.borderColor="rgb(206, 206, 206)"
+    password.style.borderColor="rgb(206, 206, 206)"
     email.style.borderColor="rgb(60, 122, 255)"
 }
-senha.onfocus=function(){
+password.onfocus=function(){
     email.style.borderColor="rgb(206, 206, 206)"
-    senha.style.borderColor="rgb(60, 122, 255)"
+    password.style.borderColor="rgb(60, 122, 255)"
 }
 /*email.onmouseleave=()=>{
     email.style.borderColor="rgb(206, 206, 206)"
