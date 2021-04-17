@@ -139,3 +139,6 @@ a:hover{
     color: gray;
     margin-bottom: 8px;
 }
+.footer-links span a{
+    cursor: pointer;
+}
