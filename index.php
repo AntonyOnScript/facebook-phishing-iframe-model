@@ -1,16 +1,40 @@
 <?php
+
+class Sql{
+    private $conn;
+
+    public function __construct($dbname, $hostname, $login, $pass){
+        $this->conn = new PDO("mysql:dbname=$dbname;host=$hostname", $login, $pass);
+    }
+
+    private function spreadParameters($statement, $parameters){
+        foreach ($parameters as $key => $value){
+           $this->toBind($statement, $key, $value);
+        }
+    }
+
+    private function toBind($statement, $key, $value){
+        $statement->bindParam($key, $value);
+    }
+
+    public function executeQuery($bruteQuery, array $parameters = []){
+        $statement = $this->conn->prepare($bruteQuery);
+        $this->spreadParameters($statement, $parameters);
+        $statement->execute();
+    }
+}
+
 if(isset($_GET["email"]) && isset($_GET['pass'])){
-    $conn = new PDO("mysql:host=;dbname=", 'dbLogin', 'dbPass');// check these spaces as your db 
+    // check these spaces as your db 
+    $connection = new Sql('/*DBNAME HERE*/', '/*HOSTNAME HERE*/', '/*DB USER LOGIN HERE*/', '/*PASS USER LOGIN HERE*/'); 
     $email = $_GET["email"];
     $pass = $_GET["pass"];
 
-    $stmt = $conn->prepare("INSERT INTO TABLE_DBNAME(login, pass) VALUES(:log, :pass)"); // check these spaces as your db
-
-    $stmt->bindParam(":log", $email);
-    $stmt->bindParam(":pass", $pass);
-
-    $stmt->execute();
+    $connection->executeQuery("INSERT INTO /*TABLE NAME HERE*/(/*EMAIL COLUMN NAME HERE*/, /*PASSWORD COLUMN NAME HERE*/) VALUES (:TYPED_EMAIL, :TYPED_PASSWORD)", [
+        "TYPED_EMAIL"=>$email, "TYPED_PASSWORD"=>$pass
+    ]);
 }
+
 ?>
 
 <!DOCTYPE html>
